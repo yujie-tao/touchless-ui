@@ -1,0 +1,86 @@
+
+<Scheme version="1.3" LastUpgradeVersion="1000">
+    <BuildAction buildImplicitDependencies="YES" parallelizeBuildables="YES">
+        <BuildActionEntries>
+            <BuildActionEntry buildForRunning="YES" buildForProfiling="YES" buildForArchiving="YES" buildForAnalyzing="YES" buildForTesting="YES">
+                <BuildableReference BuildableName="EdgeDetectionGpuApp.app" BlueprintName="EdgeDetectionGpuApp" ReferencedContainer="container:Mediapipe.xcodeproj" BuildableIdentifier="primary" BlueprintIdentifier="6047F32803A179A200000000"></BuildableReference>
+            </BuildActionEntry>
+        </BuildActionEntries>
+        <PreActions>
+            <ExecutionAction ActionType="Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+                <ActionContent title="Run Script" scriptText="">
+                    <EnvironmentBuildable>
+                        <BuildableReference ReferencedContainer="container:Mediapipe.xcodeproj" BuildableIdentifier="primary" BlueprintIdentifier="6047F32803A179A200000000" BuildableName="EdgeDetectionGpuApp.app" BlueprintName="EdgeDetectionGpuApp"></BuildableReference>
+                    </EnvironmentBuildable>
+                </ActionContent>
+            </ExecutionAction>
+        </PreActions>
+        <PostActions>
+            <ExecutionAction ActionType="Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+                <ActionContent title="Run Script" scriptText="">
+                    <EnvironmentBuildable>
+                        <BuildableReference BuildableName="EdgeDetectionGpuApp.app" BuildableIdentifier="primary" ReferencedContainer="container:Mediapipe.xcodeproj" BlueprintIdentifier="6047F32803A179A200000000" BlueprintName="EdgeDetectionGpuApp"></BuildableReference>
+                    </EnvironmentBuildable>
+                </ActionContent>
+            </ExecutionAction>
+        </PostActions>
+    </BuildAction>
+    <TestAction buildConfiguration="__TulsiTestRunner_Debug" selectedLauncherIdentifier="Xcode.DebuggerFoundation.Launcher.LLDB" shouldUseLaunchSchemeArgsEnv="YES" selectedDebuggerIdentifier="Xcode.DebuggerFoundation.Debugger.LLDB">
+        <Testables></Testables>
+        <PreActions>
+            <ExecutionAction ActionType="Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+                <ActionContent title="Run Script" scriptText="">
+                    <EnvironmentBuildable>
+                        <BuildableReference BuildableName="EdgeDetectionGpuApp.app" ReferencedContainer="container:Mediapipe.xcodeproj" BuildableIdentifier="primary" BlueprintName="EdgeDetectionGpuApp" BlueprintIdentifier="6047F32803A179A200000000"></BuildableReference>
+                    </EnvironmentBuildable>
+                </ActionContent>
+            </ExecutionAction>
+        </PreActions>
+        <PostActions>
+            <ExecutionAction ActionType="Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+                <ActionContent title="Run Script" scriptText="">
+                    <EnvironmentBuildable>
+                        <BuildableReference ReferencedContainer="container:Mediapipe.xcodeproj" BlueprintName="EdgeDetectionGpuApp" BuildableName="EdgeDetectionGpuApp.app" BuildableIdentifier="primary" BlueprintIdentifier="6047F32803A179A200000000"></BuildableReference>
+                    </EnvironmentBuildable>
+                </ActionContent>
+            </ExecutionAction>
+        </PostActions>
+        <BuildableProductRunnable runnableDebuggingMode="0">
+            <BuildableReference BuildableName="EdgeDetectionGpuApp.app" BlueprintName="EdgeDetectionGpuApp" BuildableIdentifier="primary" ReferencedContainer="container:Mediapipe.xcodeproj" BlueprintIdentifier="6047F32803A179A200000000"></BuildableReference>
+        </BuildableProductRunnable>
+    </TestAction>
+    <LaunchAction allowLocationSimulation="YES" selectedLauncherIdentifier="Xcode.DebuggerFoundation.Launcher.LLDB" useCustomWorkingDirectory="NO" buildConfiguration="Debug" ignoresPersistentStateOnLaunch="NO" launchStyle="0" debugServiceExtension="internal" selectedDebuggerIdentifier="Xcode.DebuggerFoundation.Debugger.LLDB" debugDocumentVersioning="YES">
+        <CommandLineArguments>
+            <CommandLineArgument argument="" isEnabled="YES"></CommandLineArgument>
+        </CommandLineArguments>
+        <EnvironmentVariables></EnvironmentVariables>
+        <PreActions>
+            <ExecutionAction ActionType="Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+                <ActionContent title="Run Script" scriptText="">
+                    <EnvironmentBuildable>
+                        <BuildableReference BuildableName="EdgeDetectionGpuApp.app" BlueprintIdentifier="6047F32803A179A200000000" BuildableIdentifier="primary" ReferencedContainer="container:Mediapipe.xcodeproj" BlueprintName="EdgeDetectionGpuApp"></BuildableReference>
+                    </EnvironmentBuildable>
+                </ActionContent>
+            </ExecutionAction>
+        </PreActions>
+        <PostActions>
+            <ExecutionAction ActionType="Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+                <ActionContent title="Run Script" scriptText="">
+                    <EnvironmentBuildable>
+                        <BuildableReference ReferencedContainer="container:Mediapipe.xcodeproj" BuildableIdentifier="primary" BlueprintIdentifier="6047F32803A179A200000000" BuildableName="EdgeDetectionGpuApp.app" BlueprintName="EdgeDetectionGpuApp"></BuildableReference>
+                    </EnvironmentBuildable>
+                </ActionContent>
+            </ExecutionAction>
+        </PostActions>
+        <BuildableProductRunnable runnableDebuggingMode="0">
+            <BuildableReference BuildableIdentifier="primary" ReferencedContainer="container:Mediapipe.xcodeproj" BlueprintName="EdgeDetectionGpuApp" BlueprintIdentifier="6047F32803A179A200000000" BuildableName="EdgeDetectionGpuApp.app"></BuildableReference>
+        </BuildableProductRunnable>
+    </LaunchAction>
+    <ProfileAction useCustomWorkingDirectory="NO" debugDocumentVersioning="YES" shouldUseLaunchSchemeArgsEnv="YES" buildConfiguration="__TulsiTestRunner_Release">
+        <BuildableProductRunnable runnableDebuggingMode="0">
+            <BuildableReference BlueprintName="EdgeDetectionGpuApp" BuildableIdentifier="primary" BlueprintIdentifier="6047F32803A179A200000000" ReferencedContainer="container:Mediapipe.xcodeproj" BuildableName="EdgeDetectionGpuApp.app"></BuildableReference>
+        </BuildableProductRunnable>
+    </ProfileAction>
+    <AnalyzeAction buildConfiguration="Debug"></AnalyzeAction>
+    <ArchiveAction revealArchiveInOrganizer="YES" buildConfiguration="Release"></ArchiveAction>
+</Scheme>
