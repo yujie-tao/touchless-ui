@@ -8,6 +8,7 @@ from pyppeteer import launch
 
 def main():
 	classifier = train()
+	print("Training Completed.")
 	input_data = open("mediapipe/test.txt","r")
 	classify(classifier, input_data)
 	

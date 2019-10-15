@@ -2,6 +2,8 @@ import time
 import asyncio
 from pyppeteer import launch
 
+import detect
+
 async def main():
     browser = await launch(headless=False, autoClose=False)
     page = await browser.newPage()
