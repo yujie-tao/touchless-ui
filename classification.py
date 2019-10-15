@@ -6,27 +6,23 @@ from sklearn import svm
 def main():
 	classifier = train()
 	print('classifier done')
-	logfile = open("mediapipe/test.txt","r")
-	loglines = follow(logfile)
-	for line in loglines:
-		if "end" not in line:
-			line = line.strip().split(',')
-			line = [[float(i) for i in line]]
-			print(classifier.predict(line))
-			# print(line)
-			#classifier.predict([line.split(',')])
-			# print(line.split(','))
+	file = open("mediapipe/test.txt","r")
+	gesture_stream = follow(file)
+	for gesture in gesture_stream:
+		if "end" not in gesture:
+			gesture = gesture.strip().split(',')
+			gesture = [[float(i) for i in gesture]]
+			print(classifier.predict(gesture))
 
 
-
-def follow(thefile):
-    thefile.seek(0,2)
+def follow(file_name):
+    file_name.seek(0,2)
     while True:
-        line = thefile.readline()
-        if not line:
+        gesture = file_name.readline()
+        if not gesture:
             time.sleep(0.1)
             continue
-        yield line
+        yield gesture
 
 
 def train():
