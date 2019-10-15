@@ -1,10 +1,32 @@
+import time
 import random
 import numpy as np
 from sklearn import svm
 
 def main():
 	classifier = train()
-	
+	print('classifier done')
+	logfile = open("mediapipe/test.txt","r")
+	loglines = follow(logfile)
+	for line in loglines:
+		if "end" not in line:
+			line = line.strip().split(',')
+			line = [[float(i) for i in line]]
+			print(classifier.predict(line))
+			# print(line)
+			#classifier.predict([line.split(',')])
+			# print(line.split(','))
+
+
+
+def follow(thefile):
+    thefile.seek(0,2)
+    while True:
+        line = thefile.readline()
+        if not line:
+            time.sleep(0.1)
+            continue
+        yield line
 
 
 def train():
