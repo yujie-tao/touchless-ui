@@ -3,14 +3,28 @@ import random
 import numpy as np
 from sklearn import svm
 
+import asyncio
+from pyppeteer import launch
+
 def main():
 	classifier = train()
-	# a = np.asarray([0.513122,0.860783,0.356239,0.790055,0.274009,0.668277,0.246593,0.552753,0.221277,0.469811,0.414848,0.50565 ,0.387338,0.34371 ,0.377919,0.23178,0.373127,0.143402,0.520822,0.508402,0.538382,0.331114,0.547799,0.214045,0.545361,0.124099,0.613324,0.541049,0.643841,0.379376,0.645113,0.273412,0.638148,0.187606,0.703423,0.596537,0.745857,0.481994,0.779236,0.391669,0.80264,0.2922842]).reshape(1,42)
-	# print((np.asarray(a)).shape)
-	# print(classifier.predict(a))
-	# print('classifier done')
-	file = open("mediapipe/test.txt","r")
-	gesture_stream = follow(file)
+	input_data = open("mediapipe/test.txt","r")
+	classify(classifier, input_data)
+	
+
+
+async def headless_control():
+	browser = await launch()
+	page = await browser.newPage()
+	await page.goto('google.com')
+	await page.screenshot({'path': 'example.png'})
+	await browser.close()
+
+
+# Clsassify input steram
+def classify(classifier, input_data):
+	input_data = open("mediapipe/test.txt","r")
+	gesture_stream = listen(input_data)
 	gesture = []
 	for finger_coord in gesture_stream:
 		if "end" not in finger_coord:
@@ -20,11 +34,13 @@ def main():
 
 			if len(gesture) == 42:
 				test_gesture = np.asarray(gesture).reshape(1,42)
+				# print(test_gesture)
 				print(classifier.predict(test_gesture))
 				gesture.clear()
 
 
-def follow(file_name):
+# Listen the output update from mediapipe
+def listen(file_name):
     file_name.seek(0,2)
     while True:
         finger_coord = file_name.readline()
@@ -39,14 +55,13 @@ def train():
 	stone_data = load_data('stone.txt')
 	train_data = np.concatenate([palm_data, stone_data])
 
-	palm_label = [0 for i in range(len(palm_data))]
-	stone_label = [1 for i in range(len(stone_data))]
+	palm_label = [1 for i in range(len(palm_data))]
+	stone_label = [2 for i in range(len(stone_data))]
 	train_label = np.concatenate([palm_label,stone_label])
 
 	classifier = svm.SVC(gamma='scale')
 	classifier.fit(train_data, train_label)  
 	return classifier
-
 
 
 def load_data(file_name):
@@ -83,7 +98,7 @@ def load_data(file_name):
 		dstring_chunk = (np.asarray(dstring_chunk)).reshape(1,42)
 		output.append(dstring_chunk)
 
-
+	# Reshape into 2D as original datat is in 3D, which is not spported in SVM
 	output = np.asarray(output).reshape(len(output),42)
 	
 	return output
