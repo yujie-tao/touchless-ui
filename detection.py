@@ -42,11 +42,12 @@ def predict(classifier, input_data):
 	page = asyncio.get_event_loop().run_until_complete(control.launch_page())
 
 
-	turn = False
-	
+	on = True
+
 	input_data = open("mediapipe/test.txt","r")
 	gesture_stream = listen(input_data)
 	gesture = []
+
 	for finger_coord in gesture_stream:
 		if "end" not in finger_coord:
 			finger_coord = finger_coord.strip().split(',')
@@ -56,13 +57,18 @@ def predict(classifier, input_data):
 			if len(gesture) == 42:
 				test_gesture = np.asarray(gesture).reshape(1,42)
 				prediction = classifier.predict(test_gesture)
-				if prediction == [1] and turn is False:
+				print(prediction)
+
+
+				if prediction == [1] and on is False:
 					asyncio.get_event_loop().run_until_complete(control.click_button(page))
-					turn = True
+					on = True
 				else:
-					print(prediction)
+					if prediction == [2] and on is True:
+						asyncio.get_event_loop().run_until_complete(control.click_button(page))
+						on = False
+
 				gesture.clear()
-	# No return this function, need to have consistent return.
 
 
 # Listen the output update from mediapipe
