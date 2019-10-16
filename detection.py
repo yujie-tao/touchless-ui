@@ -1,17 +1,32 @@
 import time
 import random
+import asyncio
 import numpy as np
 from sklearn import svm
+
+
+import control
 
 import asyncio
 from pyppeteer import launch
 
 def main():
+
+	# Launch classifier
 	classifier = train()
 	print("Training Completed.")
-	input_data = open("mediapipe/test.txt","r")
-	classify(classifier, input_data)
 	
+	## Open browser
+	# page = asyncio.get_event_loop().run_until_complete(control.launch_page())
+
+	input_data = open("mediapipe/test.txt","r")
+	predict(classifier, input_data)
+	# print(type(output))
+
+	# if output == [1]:
+	# 	print('yes')
+		# asyncio.get_event_loop().run_until_complete(control.click_button(page))
+
 
 
 async def headless_control():
@@ -23,7 +38,12 @@ async def headless_control():
 
 
 # Clsassify input steram
-def classify(classifier, input_data):
+def predict(classifier, input_data):
+	page = asyncio.get_event_loop().run_until_complete(control.launch_page())
+
+
+	turn = False
+	
 	input_data = open("mediapipe/test.txt","r")
 	gesture_stream = listen(input_data)
 	gesture = []
@@ -35,9 +55,14 @@ def classify(classifier, input_data):
 
 			if len(gesture) == 42:
 				test_gesture = np.asarray(gesture).reshape(1,42)
-				# print(test_gesture)
-				print(classifier.predict(test_gesture))
+				prediction = classifier.predict(test_gesture)
+				if prediction == [1] and turn is False:
+					asyncio.get_event_loop().run_until_complete(control.click_button(page))
+					turn = True
+				else:
+					print(prediction)
 				gesture.clear()
+	# No return this function, need to have consistent return.
 
 
 # Listen the output update from mediapipe
