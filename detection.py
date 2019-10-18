@@ -12,35 +12,21 @@ import pyppeteer
 
 def main():
 
-	# Launch classifier
+	# Train classifier
 	classifier = train()
 	print("Training Completed.")
 	
-	## Open browser
-	# page = asyncio.get_event_loop().run_until_complete(control.launch_page())
-
+	# Input data stream
 	input_data = open("mediapipe/test.txt","r")
+	
+	# Lunch classifier
 	predict(classifier, input_data)
-	# print(type(output))
 
-	# if output == [1]:
-	# 	print('yes')
-		# asyncio.get_event_loop().run_until_complete(control.click_button(page))
-
-
-
-async def headless_control():
-	browser = await launch()
-	page = await browser.newPage()
-	await page.goto('google.com')
-	await page.screenshot({'path': 'example.png'})
-	await browser.close()
 
 
 # Clsassify input steram
 def predict(classifier, input_data):
 	page = asyncio.get_event_loop().run_until_complete(control.launch_page())
-
 
 	on = True
 
@@ -61,54 +47,15 @@ def predict(classifier, input_data):
 
 
 				if prediction == [1] and on is False:
-					# if asyncio.get_event_loop() == None:
-					# 	asyncio.set_event_loop(acontrol.click_button(page))
-					# loop = asyncio.get_event_loop()
-					# while True:
-					# try:
-					# 	loop = asyncio.get_event_loop()
-					# 	print('hello')
-					# 	# break
-					# 	# loop.create_connection()
-
-					# except:
-					# 	print('ok')
-					# 	asyncio.set_event_loop(syncio.new_event_loop())
-					# 	loop = asyncio.get_event_loop()
-
+			
 					loop = asyncio.get_event_loop()
 					loop.run_until_complete(control.click_button(page))
-					# try:
-					# 	loop.run_until_complete(control.click_button(page))
-
-					# except RuntimeError: 
-					# 	loop = asyncio.new_event_loop()
-					# 	asyncio.set_event_loop(loop)
-					# 	loop_new = asyncio.get_event_loop()
-
-					# 	print(loop_new.is_closed())
-					# 	loop_new.run_until_complete(control.click_button(page))
-
-					# loop.close()
 					on = True
 				else:
 					if prediction == [2] and on is True:
-						# loop = asyncio.get_event_loop()
 						loop = asyncio.get_event_loop()
 						loop.run_until_complete(control.click_button(page))
-						# try:
-						# 	loop.run_until_complete(control.click_button(page))
 
-						# except RuntimeError:
-						# 	loop = asyncio.new_event_loop()
-						# 	asyncio.set_event_loop(loop)
-						# 	loop_new = asyncio.get_event_loop()
-
-						# 	print(loop_new.is_closed())
-						# 	loop_new.run_until_complete(control.click_button(page))
-
-
-						# loop.close()
 						on = False
 
 				gesture.clear()
