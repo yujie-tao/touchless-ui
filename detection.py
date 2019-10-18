@@ -8,7 +8,7 @@ from sklearn import svm
 import control
 
 import asyncio
-from pyppeteer import launch
+import pyppeteer
 
 def main():
 
@@ -61,11 +61,54 @@ def predict(classifier, input_data):
 
 
 				if prediction == [1] and on is False:
-					asyncio.get_event_loop().run_until_complete(control.click_button(page))
+					# if asyncio.get_event_loop() == None:
+					# 	asyncio.set_event_loop(acontrol.click_button(page))
+					# loop = asyncio.get_event_loop()
+					# while True:
+					# try:
+					# 	loop = asyncio.get_event_loop()
+					# 	print('hello')
+					# 	# break
+					# 	# loop.create_connection()
+
+					# except:
+					# 	print('ok')
+					# 	asyncio.set_event_loop(syncio.new_event_loop())
+					# 	loop = asyncio.get_event_loop()
+
+					loop = asyncio.get_event_loop()
+					loop.run_until_complete(control.click_button(page))
+					# try:
+					# 	loop.run_until_complete(control.click_button(page))
+
+					# except RuntimeError: 
+					# 	loop = asyncio.new_event_loop()
+					# 	asyncio.set_event_loop(loop)
+					# 	loop_new = asyncio.get_event_loop()
+
+					# 	print(loop_new.is_closed())
+					# 	loop_new.run_until_complete(control.click_button(page))
+
+					# loop.close()
 					on = True
 				else:
 					if prediction == [2] and on is True:
-						asyncio.get_event_loop().run_until_complete(control.click_button(page))
+						# loop = asyncio.get_event_loop()
+						loop = asyncio.get_event_loop()
+						loop.run_until_complete(control.click_button(page))
+						# try:
+						# 	loop.run_until_complete(control.click_button(page))
+
+						# except RuntimeError:
+						# 	loop = asyncio.new_event_loop()
+						# 	asyncio.set_event_loop(loop)
+						# 	loop_new = asyncio.get_event_loop()
+
+						# 	print(loop_new.is_closed())
+						# 	loop_new.run_until_complete(control.click_button(page))
+
+
+						# loop.close()
 						on = False
 
 				gesture.clear()
