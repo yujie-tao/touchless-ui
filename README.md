@@ -1,37 +1,36 @@
 # Touchless UI
-Touchless UI is a hand gesture based user interaction program. It currently supports two hand gestures to control a youtube video's play and stop.
+Touchless UI is a hand gesture based user interaction program. It allows the user to interact with youtube videos by using intuitive hand gestures. At the proof of concept stage, this program currently supports interactions to play and stop a video. I am extending it to other gestures and applications.
 
-This program is built on a customized version of mediapipe and the interaction is running on the headless browser Pyppeteer.
+Touchless UI is built on a customized version of [mediapipe](https://github.com/yujie-tao/mediapipe/), and the interaction is running on a headless borwser. Mediapipe is multimodal applied ML pipeline that support us with hand landmarks. Headless browser allow us to make use of existing user experience on web space and add new layer of interaction on it.
 
 ## Installation
-1. Clone repository
-``
+### Clone repository
+```python
 $ git clone --recursive https://github.com/yujie-tao/touchless-ui.git
 
-``
+```
 
-2. Setup environment
+### Setup environment
 
-### Mediapipe
-Follow the instruction of [mediapipe](https://github.com/yujie-tao/mediapipe/blob/master/mediapipe/docs/install.md#installing-on-macos) to install environment for your system.
+1. Mediapipe
 
-Only CPU version is now needed.
+Follow the instruction of [mediapipe](https://github.com/yujie-tao/mediapipe/blob/master/mediapipe/docs/install.md#installing-on-macos) to install environment for your system. Currently only supports CPU. 
 
 Key components are:
 * bazel
 * OpenCV
 
-### Pyppeteer
+2. Headless browser
 
-``
+```python
 $ python -m pip install -U git+https://github.com/yujie-tao/pyppeteer.git
 
-``
+```
 
 ## Initialization
 1. Gesture tracking
 
-``
+```python
 # Video from webcam running on desktop CPU
 $ bazel build -c opt --define MEDIAPIPE_DISABLE_GPU=1 \
     mediapipe/examples/desktop/hand_tracking:hand_tracking_cpu
@@ -48,17 +47,13 @@ $ export GLOG_logtostderr=1
 # Any errors is likely due to your webcam being not accessible
 $ bazel-bin/mediapipe/examples/desktop/hand_tracking/hand_tracking_cpu \
     --calculator_graph_config_file=mediapipe/graphs/hand_tracking/hand_tracking_desktop_live.pbtxt
-
-``
+```
 
 
 2. Gesture detection
 
 
-``
+```python
 $ python detection.py
 
-``
-
-
-## Architecture
+```
