@@ -17,7 +17,7 @@ def main():
 	print("Training Completed.")
 	
 	# Input data stream
-	input_data = open("mediapipe/test.txt","r")
+	input_data = open("mediapipe/data/test.txt","r")
 	
 	# Lunch classifier
 	predict(classifier, input_data)
@@ -28,9 +28,8 @@ def main():
 def predict(classifier, input_data):
 	page = asyncio.get_event_loop().run_until_complete(control.launch_page())
 
-	on = True
+	video_on = True
 
-	input_data = open("mediapipe/test.txt","r")
 	gesture_stream = listen(input_data)
 	gesture = []
 
@@ -46,17 +45,17 @@ def predict(classifier, input_data):
 				print(prediction)
 
 
-				if prediction == [1] and on is False:
+				if prediction == [1] and video_on is False:
 			
 					loop = asyncio.get_event_loop()
 					loop.run_until_complete(control.click_button(page))
-					on = True
+					video_on = True
 				else:
-					if prediction == [2] and on is True:
+					if prediction == [2] and video_on is True:
 						loop = asyncio.get_event_loop()
 						loop.run_until_complete(control.click_button(page))
 
-						on = False
+						video_on = False
 
 				gesture.clear()
 
@@ -91,7 +90,7 @@ def train():
 def load_data(file_name):
 	
 	# Load data
-	file = open("mediapipe/" + file_name)
+	file = open("mediapipe/data/" + file_name)
 	elements = file.readlines()
 
 	# Clean up data

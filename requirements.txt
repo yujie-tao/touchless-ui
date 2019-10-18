@@ -35,3 +35,5 @@ termcolor==1.1.0
 Theano==1.0.4
 werkzeug==0.15.3
 gdown
+
+python3 -m pip install -U git+https://github.com/yujie-tao/pyppeteer.git
