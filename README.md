@@ -5,7 +5,7 @@ Touchless UI is built on a customized version of [mediapipe](https://github.com/
 
 ## Installation
 ### Clone repository
-```python
+```
 git clone --recursive https://github.com/yujie-tao/touchless-ui.git
 
 ```
@@ -30,9 +30,9 @@ python -m pip install -U git+https://github.com/yujie-tao/pyppeteer.git
 ## Initialization
 1. Gesture tracking
 
-```python
+```
 # Video from webcam running on desktop CPU
-bazel build -c opt --define MEDIAPIPE_DISABLE_GPU=1 \
+$ bazel build -c opt --define MEDIAPIPE_DISABLE_GPU=1 \
     mediapipe/examples/desktop/hand_tracking:hand_tracking_cpu
 
 # It should print:
@@ -42,10 +42,11 @@ bazel build -c opt --define MEDIAPIPE_DISABLE_GPU=1 \
 #INFO: Streaming build results to: http://sponge2/360196b9-33ab-44b1-84a7-1022b5043307
 #INFO: Build completed successfully, 12517 total actions
 
-export GLOG_logtostderr=1
+$ export GLOG_logtostderr=1
 # This will open up your webcam as long as it is connected and on
 # Any errors is likely due to your webcam being not accessible
-bazel-bin/mediapipe/examples/desktop/hand_tracking/hand_tracking_cpu \
+
+$ bazel-bin/mediapipe/examples/desktop/hand_tracking/hand_tracking_cpu \
     --calculator_graph_config_file=mediapipe/graphs/hand_tracking/hand_tracking_desktop_live.pbtxt
 ```
 
