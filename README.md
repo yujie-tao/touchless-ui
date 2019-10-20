@@ -11,7 +11,6 @@ Touchless UI is built on a customized version of [mediapipe](https://github.com/
 ### Clone repository
 ```
 git clone --recursive https://github.com/yujie-tao/touchless-ui.git
-
 ```
 
 ### Setup environment
