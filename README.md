@@ -1,13 +1,16 @@
 # Touchless UI
-Touchless UI is a hand gesture based user interaction program. It allows the user to interact with youtube videos by using intuitive hand gestures. At the proof of concept stage, this program currently supports interactions to play and stop a video. I am extending it to other gestures and applications.
+Touchless UI is a hand gesture-based user interaction program. It allows the user to interact with youtube videos by using intuitive hand gestures. At the proof of concept stage, this program currently supports interactions to play and stop a video. I will extend it to other gestures and applications in the future.
 
-Touchless UI is built on a customized version of [mediapipe](https://github.com/yujie-tao/mediapipe/), and the interaction is running on a headless borwser. Mediapipe is multimodal applied ML pipeline that support us with hand landmarks. Headless browser allow us to make use of existing user experience on web space and add new layer of interaction on it.
+Touchless UI is built on a customized version of [mediapipe](https://github.com/yujie-tao/mediapipe/), and the interaction is running on a headless browser. Mediapipe is a multimodal applied ML pipeline that supports us with hand landmarks. I classify different gestures by using a SVM model and then connect it to specific experience within the browser. The headless browser allows me to make use of existing user experience on webspace and add a new layer of interaction on it.
+
+
+![touchless-ui](https://user-images.githubusercontent.com/32469005/67163794-3179cb00-f341-11e9-99f2-5f6c99c20437.gif)
+
 
 ## Installation
 ### Clone repository
 ```
 git clone --recursive https://github.com/yujie-tao/touchless-ui.git
-
 ```
 
 ### Setup environment
