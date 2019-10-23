@@ -20,7 +20,7 @@ git clone --recursive https://github.com/yujie-tao/touchless-ui.git
 Follow the instruction of [mediapipe](https://github.com/yujie-tao/mediapipe/blob/master/mediapipe/docs/install.md#installing-on-macos) to install environment for your system. Currently only supports CPU. 
 
 Key components are:
-* bazel
+* Bazel
 * OpenCV
 
 2. Headless browser
