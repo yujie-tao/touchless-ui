@@ -1,4 +1,4 @@
-numpy==1.14.0
+numpy==1.22.0
 absl_py==0.1.13
 pyppeteer==0.0.25
 absl==0.0
